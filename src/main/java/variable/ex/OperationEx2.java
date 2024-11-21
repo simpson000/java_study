@@ -1,6 +1,6 @@
 package variable.ex;
 
-public class OperationEx1 {
+public class OperationEx2 {
     public static void main(String[] args) {
         int num1, num2, num3;
         num1 = 10;
@@ -62,5 +62,20 @@ public class OperationEx1 {
         int max = (a > b ? a : b);
         System.out.println("더 큰 숫자는 :" +max);
 
+        int num =1;
+        int result=0;
+        while (num<=3){
+
+            result+=num;
+            num=num+1;
+
+        }
+        System.out.println(result);
+
+        int count =10;
+
+        for (int i = 0; i <= count; i++){
+            System.out.println(i);
+        }
     }
 }
