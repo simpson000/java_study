@@ -11,5 +11,9 @@ public class Album extends Item{
     public void print(){
         super.print();
         System.out.println("Artist: " + artist);
+
+
+
+
     }
 }
