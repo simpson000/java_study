@@ -10,7 +10,7 @@ public class Album extends Item{
     @Override
     public void print(){
         super.print();
-        System.out.println("Artist: " + artist);
+        System.out.println("Artist: " + artist  );
 
 
 
