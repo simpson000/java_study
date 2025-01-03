@@ -16,42 +16,38 @@ public class 퀵정렬 {
     }
 
     private static void quick(int[] arr, int left, int right, int k) {
-        if (left >= right) {
-            return;
-        }
-        int pivot = partition(arr, left, right);
+        while (left <= right) {
+            int pivot = partition(arr, left, right);
 
-        if (pivot == k) {
-            return;
-        } else if (k < pivot) {
-            quick(arr, left, pivot - 1, k);  // k가 pivot보다 작으면 왼쪽 부분 탐색
-        } else {
-            quick(arr, pivot + 1, right, k); // k가 pivot보다 크면 오른쪽 부분 탐색
+            if (pivot == k) return;
+            else if (k < pivot) right = pivot - 1;
+            else left = pivot + 1;
         }
     }
 //start는 pivot값 보다 작은 값들을 무시 하면서 간다
     //end는 반대로 큰 값들을 무시하면서 간다
-    static int partition(int[] arr, int start, int end) {
-        // 1. 마지막 원소를 피벗으로 선택
-        int pivot = arr[end];
-        int i = start - 1;  // 피벗보다 작은 값들의 경계
-
-        // 2. 모든 원소를 피벗과 비교
-        for (int j = start; j < end; j++) {
-            if (arr[j] <= pivot) {
-                i++;  // 경계를 오른쪽으로 이동
-                swap(arr, i, j);  // 현재 원소를 경계로 이동
-            }
-        }
-
-        // 3. 피벗을 적절한 위치로 이동
-        swap(arr, i+1, end);
-        return i + 1;  // 피벗의 최종 위치 반환
-    }
+static int partition(int[] arr, int start, int end) {
+    int pivotIdx = start + (int)(Math.random() * (end - start + 1));
+    swap(arr, pivotIdx, end);
+    return partitionLogic(arr, start, end);
+}
 
     private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+    static int partitionLogic(int[] arr, int start, int end) {
+        int pivot = arr[end];
+        int i = start - 1;
+
+        for (int j = start; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i+1, end);
+        return i + 1;
     }
 }
